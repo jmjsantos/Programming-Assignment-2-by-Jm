@@ -1,29 +1,26 @@
-makeCacheMatrix <- function(x = matrix()) {
-  inv<-NULL
-  set<-function(y) {
-    x<<-y
-    inv<<-NULL
-  }
-
-  get<-function() x
-  setInv<-function(inverse) inv<<-inverse
-  getInv<-function() inv
+makeCacheMatrix <- function(a = matrix()) 
+{
+  Jm<-NULL
+  set<-function(g) {
+    a<<-g
+    inver<<-NULL
+}
+  get<-function() a
+  setInver<-function(inverse) Inver<<-inverse
+  getInver<-function() Inver
   list(set=set,
        get=get,
-       setInv=setInv,
-       getInv=getInv)
+       setInver=setInver,
+       getInver=getInver)
 }
-
-cacheSolve <- function(x, ...) {
-  inv<-x$getInv()
-  if(!is.null(inv)) {
-    message("retrieving matrix")
-    return(inv)
-  }
-
-  ans<-x$get()
-  inv<-solve(ans,...)
-  x$setInv(inv)
-  inv
-
+cacheSolve <- function(a, ...) {
+  inver<-x$getInver()
+  if(!is.null(inver)) {
+    message("Matrix being retrieved")
+    return(inver)
+}
+  answer<-a$get()
+  inver<-solve(answer,...)
+  a$setInver(inver)
+  inver
 }
